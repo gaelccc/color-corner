@@ -53,6 +53,7 @@ def corner(
     divergences=False,
     divergences_kwargs=None,
     labeller=None,
+    pcolor_kwargs=None,
     **hist2d_kwargs,
 ):
     """
@@ -274,6 +275,7 @@ def corner(
             reverse=reverse,
             labelpad=labelpad,
             hist_kwargs=hist_kwargs,
+            pcolor_kwargs=pcolor_kwargs,
             **hist2d_kwargs,
         )
 

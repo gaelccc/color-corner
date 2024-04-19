@@ -58,6 +58,7 @@ def corner_impl(
     reverse=False,
     labelpad=0.0,
     hist_kwargs=None,
+    pcolor_kwargs=None,
     **hist2d_kwargs,
 ):
     if quantiles is None:
@@ -379,6 +380,7 @@ def corner_impl(
                 bins=[bins[j], bins[i]],
                 new_fig=new_fig,
                 force_range=force_range,
+                pcolor_kwargs=pcolor_kwargs,
                 **hist2d_kwargs,
             )
 
@@ -786,9 +788,15 @@ def hist2d(
     # Plot the density map. This can't be plotted at the same time as the
     # contour fills.
     elif plot_density:
+        
         if pcolor_kwargs is None:
+            print('not passing')
             pcolor_kwargs = dict()
-        ax.pcolor(X, Y, H.max() - H.T, cmap=density_cmap, **pcolor_kwargs)
+            ax.pcolor(X, Y, H.max() - H.T, cmap=density_cmap, **pcolor_kwargs)
+        else:
+            print('EOEOEOEOE')
+            print(pcolor_kwargs)
+            ax.pcolor(X, Y, H.max() - H.T, **pcolor_kwargs)
 
     # Plot the contour edge colors.
     if plot_contours:
